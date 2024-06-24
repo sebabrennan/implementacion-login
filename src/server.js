@@ -4,11 +4,9 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import handlebars from 'express-handlebars';
 import morgan from 'morgan';
-import productRouter from "./routes/product.router.js";
-import cartRouter from "./routes/cart.router.js";
 import userRouter from "./routes/user.router.js";
 import viewsRouter from "./routes/views.router.js";
-import { __dirname } from './path.js';
+import { __dirname } from './utils.js';
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { initMongoDB } from "./data/database.js";
 import 'dotenv/config';
@@ -43,10 +41,8 @@ app.set('view engine', 'handlebars');
 
 initMongoDB();
 
-app.use("/api/products", productRouter);
-app.use("/api/carts", cartRouter);
 app.use("/api/users", userRouter);
-app.use("/", viewsRouter);
+app.use("/api/users", viewsRouter);
 
 const PORT = 8080;
 
