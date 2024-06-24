@@ -1,4 +1,5 @@
 import { Router } from "express";
+//import { infoSession } from "../controllers/user.controllers.js";
 
 const router = Router();
 
@@ -11,8 +12,15 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/profile", (req, res) => {
-    console.log(req.session)
-  res.render("profile");
+  console.log(req.session);
+  const {first_name, last_name, role} = req.session
+
+  const infoUser = {
+    first_name: first_name,
+    last_name: last_name,
+    role: role
+  }
+  res.render("profile", infoUser);
 });
 
 export default router;

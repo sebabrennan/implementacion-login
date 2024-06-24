@@ -12,6 +12,9 @@ export const login = async (req, res) => {
       if(isValidPassword(password, user)){
         req.session.email = email;
         req.session.password = user.password;
+        req.session.first_name = user.first_name;
+        req.session.last_name = user.last_name;
+        req.session.role = user.role;
         res.redirect("/api/users/profile");
       } else
       res.status(401).json({ msg: "Autenticación fallida" });
