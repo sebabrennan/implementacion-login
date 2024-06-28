@@ -1,3 +1,9 @@
 <h1>Welcome {{role}} {{first_name}} {{last_name}}!</h1>
+<ul>
+    {{#each products}}
+    <li>{this}</li>
+    {{/each}}
+</ul>
+{{> products}}
 
 <button onclick="">Log out</button>

@@ -6,6 +6,7 @@ import handlebars from 'express-handlebars';
 import morgan from 'morgan';
 import userRouter from "./routes/user.router.js";
 import viewsRouter from "./routes/views.router.js";
+import productRouter from "./routes/product.router.js";
 import { __dirname } from './utils.js';
 import { errorHandler } from "./middlewares/errorHandler.js";
 import { initMongoDB } from "./data/database.js";
@@ -43,6 +44,8 @@ initMongoDB();
 
 app.use("/api/users", userRouter);
 app.use("/api/users", viewsRouter);
+app.use("/api/products", productRouter);
+app.use(errorHandler);
 
 const PORT = 8080;
 
