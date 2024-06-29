@@ -13,15 +13,15 @@ import { initMongoDB } from "./data/database.js";
 import 'dotenv/config';
 
 const storeConfig = {
+    secret: process.env.SECRET_KEY,
+    resave: true,
+    saveUninitialized: true,
+    cookie: { maxAge: 180000 },
     store: MongoStore.create({
         mongoUrl: process.env.MONGO_URL,
         //crypto: { secret: process.env.SECRET_KEY },
         ttl: 180,
     }),
-    secret: process.env.SECRET_KEY,
-    resave: true,
-    saveUninitialized: true,
-    cookie: { maxAge: 180000 }
 };
 
 const app = express();

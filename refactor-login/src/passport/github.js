@@ -11,7 +11,6 @@ const strategyConfig = {
 };
 
 const registerOrLogin = async (accessToken, refreshToken, profile, done) => {
-  // console.log(profile);
   const email = profile._json.email;
   const user = await userDao.getByEmail(email);
   if (user) return done(null, user);
@@ -21,7 +20,6 @@ const registerOrLogin = async (accessToken, refreshToken, profile, done) => {
     email,
     image: profile._json.avatar_url,
     isGithub: true,
-    // image: ---
   });
   return done(null, newUser);
 };

@@ -14,7 +14,7 @@ router.get('/register-github', passport.authenticate('github', { scope: [ 'user:
 
 router.get('/profile', passport.authenticate( 'github' , {
     failureRedirect: '/login', 
-    successRedirect: '/profile-github', 
+    successRedirect: '/profile', 
     passReqToCallback: true
 }));
 

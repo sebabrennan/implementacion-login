@@ -14,9 +14,8 @@ const signup = async (req, email, password, done) =>{
     try {
         const user = await userDao.getByEmail(email);
         if(user) return done(null, false);
-        const newUser = await userDao.createUser(req.body);
+        const newUser = await userDao.register(req.body);
         return done(null, newUser);
-
     } catch (error) {
         console.log(error);
     }
@@ -24,7 +23,7 @@ const signup = async (req, email, password, done) =>{
 
 const login = async (req, email, password, done) =>{
     const user = { email, password };
-    const userLogin = await userDao.loginUser(user);
+    const userLogin = await userDao.login(user);
     if(!userLogin) return done(null, false);
     return done(null, userLogin);
 };

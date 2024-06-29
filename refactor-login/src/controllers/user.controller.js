@@ -3,7 +3,7 @@ const userDao = new UserDao();
 
 export const registerResponse = (req, res, next)=>{
     try {
-        res.json({
+        res.redirect("/login").json({
             msg: 'Register OK',
             session: req.session    // --> passport.user: id mongo
         })
@@ -16,7 +16,7 @@ export const loginResponse = async(req, res, next)=>{
     try {
         const user = await userDao.getById(req.session.passport.user);
         const { first_name, last_name, email, age, role } = user;
-        res.json({
+        res.redirect("/profile").json({
             msg: 'Login OK',
             session: req.session,
             userData: {
